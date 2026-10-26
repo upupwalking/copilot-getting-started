@@ -5,7 +5,9 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
+- View the students currently signed up for each activity
 - Sign up for activities
+- Unregister students from activities
 
 ## Getting Started
 
@@ -27,10 +29,11 @@ A super simple FastAPI application that allows students to view and sign up for 
 
 ## API Endpoints
 
-| Method | Endpoint                                                          | Description                                                         |
-| ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| Method | Endpoint                                                                  | Description                                                         |
+| ------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| GET    | `/activities`                                                             | Get all activities with their details and current participant count |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu`         | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/participants?email=student@mergington.edu`  | Unregister a student from an activity                               |
 
 ## Data Model
 

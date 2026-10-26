@@ -8,70 +8,199 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #20263a;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 28px 20px;
+  background: #f3f5fb;
 }
 
 header {
   text-align: center;
-  padding: 20px 0;
-  margin-bottom: 30px;
-  background-color: #1a237e;
+  padding: 30px 20px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, #18246a, #3949ab);
   color: white;
-  border-radius: 5px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(26, 35, 126, 0.18);
 }
 
 header h1 {
   margin-bottom: 10px;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+}
+
+header h2 {
+  color: #dce3ff;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 24px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 760px) {
   main {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
 section {
   background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(31, 42, 86, 0.07);
+  min-width: 0;
 }
 
 section h3 {
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8eaf2;
   color: #1a237e;
+  font-size: 1.2rem;
 }
 
 .activity-card {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin-bottom: 14px;
+  padding: 18px;
+  border: 1px solid #e7eaf3;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff, #fafbff);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.activity-card:last-child {
+  margin-bottom: 0;
+}
+
+.activity-card:hover {
+  border-color: #c7cef4;
+  box-shadow: 0 7px 18px rgba(26, 35, 126, 0.08);
+  transform: translateY(-2px);
+}
+
+.activity-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .activity-card h4 {
-  margin-bottom: 10px;
+  margin: 0;
   color: #0066cc;
+  font-size: 1.08rem;
+  line-height: 1.4;
 }
 
-.activity-card p {
-  margin-bottom: 8px;
+.availability {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #edf0ff;
+  color: #303f9f;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.activity-description {
+  margin-bottom: 10px;
+  color: #596176;
+}
+
+.activity-schedule {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  margin-bottom: 14px;
+  color: #454d63;
+  font-size: 0.9rem;
+}
+
+.participants-section {
+  padding-top: 12px;
+  border-top: 1px solid #e8eaf2;
+}
+
+.participants-section h5 {
+  margin-bottom: 7px;
+  color: #303957;
+  font-size: 0.86rem;
+}
+
+.participant-list {
+  display: grid;
+  gap: 5px;
+  list-style: none;
+}
+
+.participant-list li {
+  overflow-wrap: anywhere;
+  color: #434b60;
+  font-size: 0.82rem;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.participant-item span {
+  overflow-wrap: anywhere;
+}
+
+.remove-participant-button {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 5px;
+  border: 1px solid #f1d5d8;
+  border-radius: 50%;
+  background: #fff7f7;
+  color: #b32636;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.remove-participant-button:hover {
+  transform: none;
+  border-color: #d94b5b;
+  background: #b32636;
+  color: white;
+}
+
+.remove-participant-button:focus-visible {
+  outline: 3px solid #9da9f5;
+  outline-offset: 2px;
+}
+
+.remove-participant-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.remove-participant-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.participant-list li.empty-participants {
+  color: #7b8294;
+  font-style: italic;
 }
 
 .form-group {
@@ -94,18 +223,20 @@ section h3 {
 }
 
 button {
-  background-color: #1a237e;
+  background: #283593;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 11px 17px;
   font-size: 16px;
-  border-radius: 5px;
+  font-weight: 700;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 button:hover {
   background-color: #3949ab;
+  transform: translateY(-1px);
 }
 
 .message {
